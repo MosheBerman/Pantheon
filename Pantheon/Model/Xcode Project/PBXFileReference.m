@@ -16,7 +16,22 @@
 
 + (id)fileReferenceWithIdentifier:(NSString *)string andDictionary:(NSDictionary *)dictionary
 {
+    PBXFileReference *fileReference = [[PBXFileReference alloc] init];
+    
+    if (fileReference) {
         
+        [fileReference setFileEncoding:dictionary[@"fileEncoding"]];
+        
+        [fileReference setLastKnownFileType:dictionary[@"lastKnownFileType"]];
+        
+        [fileReference setName:dictionary[@"name"]];
+        
+        [fileReference setPath:dictionary[@"path"]];
+        
+        [fileReference setSourceTree:dictionary[@"sourceTree"]];
+    }
+    
+    return fileReference;
 }
 
 @end
