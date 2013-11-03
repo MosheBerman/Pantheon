@@ -10,9 +10,12 @@
 
 #import "PNDetailViewController.h"
 
-@interface PNMasterViewController () {
-    NSMutableArray *_objects;
-}
+#import "PBXProject.h"
+
+@interface PNMasterViewController ()
+
+@property (nonatomic, strong) PBXProject *project;
+
 @end
 
 @implementation PNMasterViewController
@@ -28,9 +31,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(displayOpenPrompt:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (PNDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
@@ -43,12 +45,7 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
 }
 
 #pragma mark - Table View
@@ -60,15 +57,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    
+    NSInteger count = [[[self project] PBXFileReferences] count];
+    
+    if (count == 0) {
+        count = 3;
+    }
+    
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    NSArray *files = [[self project] PBXFileReferences];
+    
+    if (files.count == 0) {
+        if (indexPath.row == 1) {
+            cell.textLabel.text = NSLocalizedString(@"No Files", @"A string for when there are no files.");
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        }
+        else
+        {
+            cell.textLabel.text = @"";
+        }
+    }
+    else {
+        PBXFileReference *object = files[indexPath.row];
+        cell.textLabel.text = [object name];
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    }
     return cell;
 }
 
@@ -80,12 +99,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
+    
 }
 
 /*
@@ -106,8 +120,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *object = _objects[indexPath.row];
-    self.detailViewController.detailItem = object;
+    /**
+     *  TODO: Load the file up - we need the Xcode project to be completely built for this to work, though.
+     */
+    
+}
+
+#pragma mark - Display Open Prompt
+
+- (void)displayOpenPrompt
+{
+    
 }
 
 @end
