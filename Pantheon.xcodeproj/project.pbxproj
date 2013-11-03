@@ -22,6 +22,9 @@
 		466D427E180CF17300562D07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D425D180CF17300562D07 /* UIKit.framework */; };
 		466D4286180CF17300562D07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 466D4284180CF17300562D07 /* InfoPlist.strings */; };
 		466D4288180CF17300562D07 /* PantheonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D4287180CF17300562D07 /* PantheonTests.m */; };
+		469D98431826DC0A003B2021 /* PBXProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98411826DC0A003B2021 /* PBXProject.m */; };
+		469D98471826F701003B2021 /* PBXBuildFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98461826F701003B2021 /* PBXBuildFile.m */; };
+		469D984A1826F950003B2021 /* PBXFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98491826F950003B2021 /* PBXFileReference.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,14 @@
 		466D4283180CF17300562D07 /* PantheonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PantheonTests-Info.plist"; sourceTree = "<group>"; };
 		466D4285180CF17300562D07 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		466D4287180CF17300562D07 /* PantheonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PantheonTests.m; sourceTree = "<group>"; };
+		469D98401826DC0A003B2021 /* PBXProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXProject.h; sourceTree = "<group>"; };
+		469D98411826DC0A003B2021 /* PBXProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXProject.m; sourceTree = "<group>"; };
+		469D98421826DC0A003B2021 /* XcodeCompatibilityVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeCompatibilityVersion.h; sourceTree = "<group>"; };
+		469D98451826F701003B2021 /* PBXBuildFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXBuildFile.h; sourceTree = "<group>"; };
+		469D98461826F701003B2021 /* PBXBuildFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXBuildFile.m; sourceTree = "<group>"; };
+		469D98481826F950003B2021 /* PBXFileReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXFileReference.h; sourceTree = "<group>"; };
+		469D98491826F950003B2021 /* PBXFileReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXFileReference.m; sourceTree = "<group>"; };
+		469D984B1826FA1F003B2021 /* PBXFileEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXFileEncoding.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +133,7 @@
 				466D426F180CF17300562D07 /* PNMasterViewController.m */,
 				466D4271180CF17300562D07 /* PNDetailViewController.h */,
 				466D4272180CF17300562D07 /* PNDetailViewController.m */,
+				466D4295180CF3CE00562D07 /* Model */,
 				466D4274180CF17300562D07 /* Images.xcassets */,
 				466D4260180CF17300562D07 /* Supporting Files */,
 			);
@@ -157,6 +169,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		466D4295180CF3CE00562D07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				469D983F1826DC0A003B2021 /* Xcode Project */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		469D983F1826DC0A003B2021 /* Xcode Project */ = {
+			isa = PBXGroup;
+			children = (
+				469D98401826DC0A003B2021 /* PBXProject.h */,
+				469D98411826DC0A003B2021 /* PBXProject.m */,
+				469D98451826F701003B2021 /* PBXBuildFile.h */,
+				469D98461826F701003B2021 /* PBXBuildFile.m */,
+				469D98481826F950003B2021 /* PBXFileReference.h */,
+				469D98491826F950003B2021 /* PBXFileReference.m */,
+				469D98421826DC0A003B2021 /* XcodeCompatibilityVersion.h */,
+				469D984B1826FA1F003B2021 /* PBXFileEncoding.h */,
+			);
+			name = "Xcode Project";
+			path = "Model/Xcode Project";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +203,7 @@
 				466D4252180CF17300562D07 /* Sources */,
 				466D4253180CF17300562D07 /* Frameworks */,
 				466D4254180CF17300562D07 /* Resources */,
+				466D4291180CF19C00562D07 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -250,15 +287,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		466D4291180CF19C00562D07 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Auto Increment Version Script\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		466D4252180CF17300562D07 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				466D426A180CF17300562D07 /* PNAppDelegate.m in Sources */,
+				469D98471826F701003B2021 /* PBXBuildFile.m in Sources */,
 				466D4270180CF17300562D07 /* PNMasterViewController.m in Sources */,
 				466D4266180CF17300562D07 /* main.m in Sources */,
+				469D984A1826F950003B2021 /* PBXFileReference.m in Sources */,
 				466D4273180CF17300562D07 /* PNDetailViewController.m in Sources */,
+				469D98431826DC0A003B2021 /* PBXProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +525,7 @@
 				466D428D180CF17300562D07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		466D428E180CF17300562D07 /* Build configuration list for PBXNativeTarget "PantheonTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +534,7 @@
 				466D4290180CF17300562D07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
