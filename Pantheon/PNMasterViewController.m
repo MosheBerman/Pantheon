@@ -74,6 +74,9 @@
     NSArray *files = [[self project] PBXFileReferences];
     
     if (files.count == 0) {
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         if (indexPath.row == 1) {
             cell.textLabel.text = NSLocalizedString(@"No Files", @"A string for when there are no files.");
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -84,9 +87,12 @@
         }
     }
     else {
+        
         PBXFileReference *object = files[indexPath.row];
         cell.textLabel.text = [object name];
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        
     }
     return cell;
 }
@@ -128,7 +134,7 @@
 
 #pragma mark - Display Open Prompt
 
-- (void)displayOpenPrompt
+- (void)displayOpenPrompt:(id)sender
 {
     
 }
