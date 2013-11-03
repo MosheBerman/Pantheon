@@ -82,7 +82,7 @@
                     /* Based on the kind of object, do the right thing with it. */
                     
                     /* If we've got a file reference, add it to the project. */
-                    if ([object[@"isa"] isEqualToString:@"PBXfileReference"]) {
+                    if ([object[@"isa"] isEqualToString:@"PBXFileReference"]) {
                         [project.PBXFileReferences addObject:[PBXFileReference fileReferenceWithIdentifier:key andDictionary:object]];
                     }
                 }
