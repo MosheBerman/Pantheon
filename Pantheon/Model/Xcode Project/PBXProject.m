@@ -32,49 +32,40 @@
         {
             
             NSError *err = nil;
-            NSData *data = [NSData dataWithContentsOfURL:url options:0 error:&err];
             
-            /* If the data fails to load, set project to nil and */
-            if (!data) {
+            NSDictionary *projectContents = [NSDictionary dictionaryWithContentsOfFile:[url path]];
+            
+            /* */
+            if (!projectContents) {
                 project = nil;
                 *error = err;
             }
+            
+            /*  If we've had a successful load, populate the object. */
             else {
                 
-                NSDictionary *projectContents = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+                [project setArchiveVersion:projectContents[@"archiveVersion"]];
                 
-                /* */
-                if (!projectContents) {
-                    project = nil;
-                    *error = err;
-                }
+                [project setClasses:projectContents[@"classes"]];
                 
-                /*  If we've had a successful load, populate the object. */
-                else {
+                [project setObjectVersion:projectContents[@"objectVersion"]];
+                
+                [project setRootObjectID:projectContents[@"rootObject"]];
+                
+                /* Load the objects... */
+                
+                NSDictionary *objectsInProject = projectContents[@"objects"];
+                
+                for (NSString *key in [objectsInProject allKeys]) {
                     
-                    [project setArchiveVersion:projectContents[@"archiveVersion"]];
+                    /* Get the object itself. */
+                    NSDictionary *object = objectsInProject[@"key"];
                     
-                    [project setClasses:projectContents[@"classes"]];
+                    /* Based on the kind of object, do the right thing with it. */
                     
-                    [project setObjectVersion:projectContents[@"objectVersion"]];
-                    
-                    [project setRootObjectID:projectContents[@"rootObject"]];
-                    
-                    /* Load the objects... */
-                    
-                    NSDictionary *objectsInProject = projectContents[@"objects"];
-                    
-                    for (NSString *key in [objectsInProject allKeys]) {
-                        
-                        /* Get the object itself. */
-                        NSDictionary *object = objectsInProject[@"key"];
-                        
-                        /* Based on the kind of object, do the right thing with it. */
-                        
-                        /* If we've got a file reference, add it to the project. */
-                        if ([object[@"isa"] isEqualToString:@"PBXfileReference"]) {
-                            [project.PBXFileReferences addObject:[PBXFileReference fileReferenceWithIdentifier:key andDictionary:object]];
-                        }
+                    /* If we've got a file reference, add it to the project. */
+                    if ([object[@"isa"] isEqualToString:@"PBXfileReference"]) {
+                        [project.PBXFileReferences addObject:[PBXFileReference fileReferenceWithIdentifier:key andDictionary:object]];
                     }
                 }
             }
