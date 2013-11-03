@@ -28,17 +28,24 @@ const NSString *CellIdentifier = @"Cell Identifier";
 
 @property (nonatomic, strong) NSMutableArray *filesInDocumentsDirectory;
 
+/**
+ *  A tableViewController to display the data
+ */
+
+@property (nonatomic, strong) UINavigationController *navigationController;
+
 @end
 
 @implementation PNProjectsChooserViewController
 
 - (id)init
 {
-    self = [super init];
-    if (self) {
-        [self loadFilesFromDocumentsDirectory];
-        
 
+    self = [super init];
+    
+    if (self) {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];;
+        _navigationController = navigationController;
     }
     return self;
 }
@@ -54,6 +61,18 @@ const NSString *CellIdentifier = @"Cell Identifier";
     
     /* Register a cell class to use. */
     [[self tableView] registerClass:[UITableViewCell class] forCellReuseIdentifier:(NSString *)CellIdentifier];
+    
+    /* Set up close button. */
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss)];
+    [[self navigationItem] setLeftBarButtonItems:@[closeButton] animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self loadFilesFromDocumentsDirectory];
+    [[self tableView] reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,8 +161,9 @@ const NSString *CellIdentifier = @"Cell Identifier";
         [self loadFilesFromDocumentsDirectory];
         [[self tableView] reloadData];
         
-        /* Present self. */
-        [rootViewController presentViewController:self animated:YES completion:nil];
+        /* Present self inside of a navigation controller. */
+        [[self navigationController] setModalPresentationStyle:UIModalPresentationFormSheet];
+        [rootViewController presentViewController:[self navigationController] animated:YES completion:nil];
     }
     
     /* The root view controller doesn't exist, uh oh! */
@@ -202,5 +222,17 @@ const NSString *CellIdentifier = @"Cell Identifier";
     _filesInDocumentsDirectory = [self filesAtPath:[self documentsDirectory]];
 }
 
+#pragma mark - Dismiss
+
+/**
+ *  Dismisses the view.
+ */
+
+- (void)dismiss
+{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 
 @end
