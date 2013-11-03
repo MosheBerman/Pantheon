@@ -14,6 +14,20 @@
 
 @implementation PBXProject
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _PBXBuildFiles = [[NSMutableArray alloc] init];
+        _PBXContainerItemProxies = [[NSMutableArray alloc] init];
+        _PBXFileReferences = [[NSMutableArray alloc] init];
+        _PBXFrameworksBuildPhases = [[NSMutableArray alloc] init];
+        _PBXGroups = [[NSMutableArray alloc] init];
+        _PBXNativeTargets = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 + (id)projectFromXcodeProjectAtURL:(NSURL *)url error:(NSError **)error
 {
     
@@ -24,6 +38,10 @@
         /* If the URL is an Xcode project, we want to look for the pbxproj file. */
         
         if ([[url pathExtension] isEqualToString:@"xcodeproj"]) {
+            
+            /* Save the original project URL before we manipulate it. */
+            [project setProjectURL:url];
+            
             url = [url URLByAppendingPathComponent:@"project.pbxproj"];
         }
         
@@ -59,8 +77,8 @@
                 for (NSString *key in [objectsInProject allKeys]) {
                     
                     /* Get the object itself. */
-                    NSDictionary *object = objectsInProject[@"key"];
-                    
+                    NSDictionary *object = objectsInProject[key];
+                
                     /* Based on the kind of object, do the right thing with it. */
                     
                     /* If we've got a file reference, add it to the project. */
