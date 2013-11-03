@@ -33,7 +33,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(displayOpenPrompt:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    self.navigationItem.leftBarButtonItem = addButton;
     self.detailViewController = (PNDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
@@ -41,11 +41,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)insertNewObject:(id)sender
-{
-
 }
 
 #pragma mark - Table View
