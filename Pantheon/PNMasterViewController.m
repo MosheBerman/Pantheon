@@ -12,6 +12,8 @@
 
 #import "PBXProject.h"
 
+#import "PNProjectsChooserViewController.h"
+
 @interface PNMasterViewController ()
 
 @property (nonatomic, strong) PBXProject *project;
@@ -131,7 +133,12 @@
 
 - (void)displayOpenPrompt:(id)sender
 {
-    
+    PNProjectsChooserViewController *projectChooser = [[PNProjectsChooserViewController alloc] init];
+    [projectChooser showWithCompletionHandler:^(NSURL *url) {
+        
+    } andCancellationHandler:^(NSURL *url) {
+
+    }];
 }
 
 @end
