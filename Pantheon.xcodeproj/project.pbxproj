@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46368995182703B5003C154C /* PNProjectsChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46368994182703B5003C154C /* PNProjectsChooserViewController.m */; };
 		466D425A180CF17300562D07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D4259180CF17300562D07 /* Foundation.framework */; };
 		466D425C180CF17300562D07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D425B180CF17300562D07 /* CoreGraphics.framework */; };
 		466D425E180CF17300562D07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D425D180CF17300562D07 /* UIKit.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46368993182703B5003C154C /* PNProjectsChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNProjectsChooserViewController.h; path = "File Manager/PNProjectsChooserViewController.h"; sourceTree = "<group>"; };
+		46368994182703B5003C154C /* PNProjectsChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNProjectsChooserViewController.m; path = "File Manager/PNProjectsChooserViewController.m"; sourceTree = "<group>"; };
 		466D4256180CF17300562D07 /* Pantheon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pantheon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		466D4259180CF17300562D07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		466D425B180CF17300562D07 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +136,8 @@
 				466D426F180CF17300562D07 /* PNMasterViewController.m */,
 				466D4271180CF17300562D07 /* PNDetailViewController.h */,
 				466D4272180CF17300562D07 /* PNDetailViewController.m */,
+				46368993182703B5003C154C /* PNProjectsChooserViewController.h */,
+				46368994182703B5003C154C /* PNProjectsChooserViewController.m */,
 				466D4295180CF3CE00562D07 /* Model */,
 				466D4274180CF17300562D07 /* Images.xcassets */,
 				466D4260180CF17300562D07 /* Supporting Files */,
@@ -310,6 +315,7 @@
 			files = (
 				466D426A180CF17300562D07 /* PNAppDelegate.m in Sources */,
 				469D98471826F701003B2021 /* PBXBuildFile.m in Sources */,
+				46368995182703B5003C154C /* PNProjectsChooserViewController.m in Sources */,
 				466D4270180CF17300562D07 /* PNMasterViewController.m in Sources */,
 				466D4266180CF17300562D07 /* main.m in Sources */,
 				469D984A1826F950003B2021 /* PBXFileReference.m in Sources */,
