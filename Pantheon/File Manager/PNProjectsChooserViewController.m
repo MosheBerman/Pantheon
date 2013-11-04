@@ -140,7 +140,33 @@ const NSString *CellIdentifier = @"Cell Identifier";
     return cell;
 }
 
-#pragma mark - 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    /* Get the projects in the documents directory. */
+    NSArray *files = [self filesInDocumentsDirectory];
+
+    if ([indexPath row] < [files count]) {
+        
+        /* We need a completion handler or there's nothing to do but dismiss. */
+        if ([self completionHandler]) {
+            
+            /* Get the filename.*/
+            NSString *fileName = files[[indexPath row]];
+            
+            /* Create a URL with the fileName */
+            NSURL *url = [[NSURL URLWithString:[self documentsDirectory]] URLByAppendingPathComponent:fileName];
+            
+            /* Pass the url to the completio  handler. */
+            self.completionHandler(url);
+        }
+        
+        [self dismiss];
+    }
+}
+
+#pragma mark - Presentation & Dismissal
 
 - (void)showWithCompletionHandler:(PNFileChooserCompletion)completionHandler andCancellationHandler:(PNFileChooserCompletion)cancellationHandler
 {
@@ -170,6 +196,15 @@ const NSString *CellIdentifier = @"Cell Identifier";
     else {
         NSLog(@"The root view controller does not exist. I was expecting it to be there to present. Silently failing.");
     }
+}
+
+/**
+ *  Dismisses the view.
+ */
+
+- (void)dismiss
+{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - File Related
@@ -206,7 +241,7 @@ const NSString *CellIdentifier = @"Cell Identifier";
     
     while (file = [fileEnumerator nextObject]) {
         if ([[file pathExtension] isEqualToString:@"xcodeproj"]) {
-            [filenames addObject:[[file URL] path]];
+            [filenames addObject:file];
         }
     }
     
@@ -222,17 +257,5 @@ const NSString *CellIdentifier = @"Cell Identifier";
     _filesInDocumentsDirectory = [self filesAtPath:[self documentsDirectory]];
 }
 
-#pragma mark - Dismiss
-
-/**
- *  Dismisses the view.
- */
-
-- (void)dismiss
-{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-}
 
 @end

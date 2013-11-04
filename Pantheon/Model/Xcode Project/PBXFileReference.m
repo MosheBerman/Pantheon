@@ -24,9 +24,14 @@
         
         [fileReference setLastKnownFileType:dictionary[@"lastKnownFileType"]];
         
+        [fileReference setPath:dictionary[@"path"]];
+        
         [fileReference setName:dictionary[@"name"]];
         
-        [fileReference setPath:dictionary[@"path"]];
+        /* If there's no name, use the path's last component .*/
+        if (![fileReference name]) {
+            [fileReference setName:[[fileReference path] lastPathComponent]];
+        }
         
         [fileReference setSourceTree:dictionary[@"sourceTree"]];
     }

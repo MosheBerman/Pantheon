@@ -136,6 +136,22 @@
     PNProjectsChooserViewController *projectChooser = [[PNProjectsChooserViewController alloc] init];
     [projectChooser showWithCompletionHandler:^(NSURL *url) {
         
+        if(url)
+        {
+            /* Attempt to load the project. */
+            NSError *error = nil;
+            PBXProject *project = [PBXProject projectFromXcodeProjectAtURL:url error:&error];
+            
+            if (project) {
+                
+                [self setProject:project];
+            
+                [[self tableView] reloadData];
+                NSString *title = [[[self.project.projectURL lastPathComponent] componentsSeparatedByString:@"."] firstObject];
+                [self setTitle:title];
+            }
+            
+        }
     } andCancellationHandler:^(NSURL *url) {
 
     }];
