@@ -53,9 +53,11 @@
 @property (nonatomic, strong) NSMutableArray *PBXTargetDependencies;
 @property (nonatomic, strong) NSMutableArray *PBXVariantGroups;
 @property (nonatomic, strong) NSMutableArray *XCBuildConfigurations;
-
 @property (nonatomic, strong) NSMutableArray *PBXContainerItemProxies;
 @property (nonatomic, strong) NSDictionary *XCVersionGroup;
+
+/* A display tree for efficiency. */
+@property (nonatomic, strong) id displayTree;
 
 /**
  *  Loads an Xcode project out from a given url.
