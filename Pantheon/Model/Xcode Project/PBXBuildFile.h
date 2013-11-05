@@ -6,14 +6,9 @@
 //  Copyright (c) 2013 Moshe Berman. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PBXObject.h"
 
-@interface PBXBuildFile : NSObject
-
-/**
- *  A 96 bit UUID that identifies the build file.
- */
-@property (nonatomic, strong) NSUUID *reference;
+@interface PBXBuildFile : PBXObject
 
 /**
  *  A reference to the backing file.

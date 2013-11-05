@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Moshe Berman. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PBXObject.h"
 
-@interface PBXFileReference : NSObject
+@interface PBXFileReference : PBXObject
 
 /** 
  *  A numeric code representing the file encoding. 

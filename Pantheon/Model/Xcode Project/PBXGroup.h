@@ -1,5 +1,5 @@
 //
-//  PBXProject.h
+//  PBXGroup.h
 //  Pantheon
 //
 //  Created by Moshe Berman on 11/5/13.
@@ -8,8 +8,6 @@
 
 #import "PBXObject.h"
 
-@interface PBXProject : PBXObject
-
-
+@interface PBXGroup : PBXObject
 
 @end
