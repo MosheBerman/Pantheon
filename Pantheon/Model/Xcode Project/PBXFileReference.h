@@ -43,7 +43,7 @@
 /**
  *  Convenience Initializer that returns a file reference.
  *
- *  @param string A 96 bit identifier.
+ *  @param string A 24 character string identifier.
  *  @param dictionary A dictionary containing the data for the file reference.
  *
  *  @return A PBXFileReference object.

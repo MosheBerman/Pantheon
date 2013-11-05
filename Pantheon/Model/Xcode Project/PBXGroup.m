@@ -10,4 +10,13 @@
 
 @implementation PBXGroup
 
+- (id)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end

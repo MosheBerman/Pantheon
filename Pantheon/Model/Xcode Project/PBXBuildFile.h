@@ -11,7 +11,7 @@
 @interface PBXBuildFile : PBXObject
 
 /**
- *  A reference to the backing file.
+ *  A 24 character string reference to the backing file.
  */
 @property (nonatomic, strong) NSString *fileRef;
 
@@ -29,6 +29,6 @@
  *  @return A configured PBXBuildFile.
  */
 
-+ (id)buildFileWithReference:(NSString*)reference andDictionary:(NSDictionary *)dictionary;
++ (id)buildFileWithIdentifier:(NSString*)identifier andDictionary:(NSDictionary *)dictionary;
 
 @end

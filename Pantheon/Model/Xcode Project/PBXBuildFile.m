@@ -10,13 +10,15 @@
 
 @implementation PBXBuildFile
 
-+ (id)buildFileWithReference:(NSString*)reference andDictionary:(NSDictionary *)dictionary;
++ (id)buildFileWithIdentifier:(NSString*)identifier andDictionary:(NSDictionary *)dictionary
 {
+    /* Create a new BuildFile instance. */
     PBXBuildFile *buildFile = [[PBXBuildFile alloc] init];
     
+    /* If creation succeeded, let's load up the properties from the dictionary.*/
     if (buildFile) {
-        [buildFile setReference:[[NSUUID alloc] initWithUUIDString:reference]];
-        [buildFile setFileRef:dictionary[@"fileRef"]];
+        [buildFile setReference:identifier]; //  The reference is passed in seperately.
+        [buildFile setFileRef:dictionary[@"fileRef"]];  //  
         [buildFile setSettings:dictionary[@"settings"]];
     }
     
