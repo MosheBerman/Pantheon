@@ -10,11 +10,15 @@
 
 @implementation PBXGroup
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
+- (id)initWithIdentifier:(NSString *)identifier andDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (self) {
-        
+        [super setReference:identifier];    // The superclass holds the identifier.
+        _children =  dictionary[@"_children"];
+        _sourceTree = dictionary[@"sourceTree"];
+        _name = dictionary[@"name"];
+        _path = dictionary[@"path"];
     }
     return self;
 }

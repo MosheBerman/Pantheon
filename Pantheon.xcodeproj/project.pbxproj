@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		46368995182703B5003C154C /* PNProjectsChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46368994182703B5003C154C /* PNProjectsChooserViewController.m */; };
+		465ABB8918295C5C008C502B /* PBXProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ABB8818295C5C008C502B /* PBXProject.m */; };
+		465ABB8C18295CA0008C502B /* PBXObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ABB8B18295CA0008C502B /* PBXObject.m */; };
+		465ABBB11829AC45008C502B /* PBXReferenceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ABBB01829AC45008C502B /* PBXReferenceProxy.m */; };
 		466D425A180CF17300562D07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D4259180CF17300562D07 /* Foundation.framework */; };
 		466D425C180CF17300562D07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D425B180CF17300562D07 /* CoreGraphics.framework */; };
 		466D425E180CF17300562D07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D425D180CF17300562D07 /* UIKit.framework */; };
@@ -23,7 +26,8 @@
 		466D427E180CF17300562D07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D425D180CF17300562D07 /* UIKit.framework */; };
 		466D4286180CF17300562D07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 466D4284180CF17300562D07 /* InfoPlist.strings */; };
 		466D4288180CF17300562D07 /* PantheonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D4287180CF17300562D07 /* PantheonTests.m */; };
-		469D98431826DC0A003B2021 /* PBXProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98411826DC0A003B2021 /* PBXProject.m */; };
+		469A81C5182958F600FE268D /* PBXGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 469A81C4182958F600FE268D /* PBXGroup.m */; };
+		469D98431826DC0A003B2021 /* PBXProjectDotPBXProj.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98411826DC0A003B2021 /* PBXProjectDotPBXProj.m */; };
 		469D98471826F701003B2021 /* PBXBuildFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98461826F701003B2021 /* PBXBuildFile.m */; };
 		469D984A1826F950003B2021 /* PBXFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98491826F950003B2021 /* PBXFileReference.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +45,12 @@
 /* Begin PBXFileReference section */
 		46368993182703B5003C154C /* PNProjectsChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNProjectsChooserViewController.h; path = "File Manager/PNProjectsChooserViewController.h"; sourceTree = "<group>"; };
 		46368994182703B5003C154C /* PNProjectsChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNProjectsChooserViewController.m; path = "File Manager/PNProjectsChooserViewController.m"; sourceTree = "<group>"; };
+		465ABB8718295C5C008C502B /* PBXProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXProject.h; sourceTree = "<group>"; };
+		465ABB8818295C5C008C502B /* PBXProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXProject.m; sourceTree = "<group>"; };
+		465ABB8A18295CA0008C502B /* PBXObject.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = PBXObject.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		465ABB8B18295CA0008C502B /* PBXObject.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = PBXObject.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		465ABBAF1829AC45008C502B /* PBXReferenceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXReferenceProxy.h; sourceTree = "<group>"; };
+		465ABBB01829AC45008C502B /* PBXReferenceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXReferenceProxy.m; sourceTree = "<group>"; };
 		466D4256180CF17300562D07 /* Pantheon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pantheon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		466D4259180CF17300562D07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		466D425B180CF17300562D07 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,8 +72,10 @@
 		466D4283180CF17300562D07 /* PantheonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PantheonTests-Info.plist"; sourceTree = "<group>"; };
 		466D4285180CF17300562D07 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		466D4287180CF17300562D07 /* PantheonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PantheonTests.m; sourceTree = "<group>"; };
-		469D98401826DC0A003B2021 /* PBXProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXProject.h; sourceTree = "<group>"; };
-		469D98411826DC0A003B2021 /* PBXProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXProject.m; sourceTree = "<group>"; };
+		469A81C3182958F600FE268D /* PBXGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXGroup.h; sourceTree = "<group>"; };
+		469A81C4182958F600FE268D /* PBXGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXGroup.m; sourceTree = "<group>"; };
+		469D98401826DC0A003B2021 /* PBXProjectDotPBXProj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXProjectDotPBXProj.h; sourceTree = "<group>"; };
+		469D98411826DC0A003B2021 /* PBXProjectDotPBXProj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXProjectDotPBXProj.m; sourceTree = "<group>"; };
 		469D98421826DC0A003B2021 /* XcodeCompatibilityVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeCompatibilityVersion.h; sourceTree = "<group>"; };
 		469D98451826F701003B2021 /* PBXBuildFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXBuildFile.h; sourceTree = "<group>"; };
 		469D98461826F701003B2021 /* PBXBuildFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXBuildFile.m; sourceTree = "<group>"; };
@@ -96,6 +108,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		465ABB8D18295DB7008C502B /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				469D98451826F701003B2021 /* PBXBuildFile.h */,
+				469D98461826F701003B2021 /* PBXBuildFile.m */,
+				469A81C3182958F600FE268D /* PBXGroup.h */,
+				469A81C4182958F600FE268D /* PBXGroup.m */,
+				469D98481826F950003B2021 /* PBXFileReference.h */,
+				469D98491826F950003B2021 /* PBXFileReference.m */,
+				465ABBAF1829AC45008C502B /* PBXReferenceProxy.h */,
+				465ABBB01829AC45008C502B /* PBXReferenceProxy.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		466D424D180CF17300562D07 = {
 			isa = PBXGroup;
 			children = (
@@ -185,12 +212,13 @@
 		469D983F1826DC0A003B2021 /* Xcode Project */ = {
 			isa = PBXGroup;
 			children = (
-				469D98401826DC0A003B2021 /* PBXProject.h */,
-				469D98411826DC0A003B2021 /* PBXProject.m */,
-				469D98451826F701003B2021 /* PBXBuildFile.h */,
-				469D98461826F701003B2021 /* PBXBuildFile.m */,
-				469D98481826F950003B2021 /* PBXFileReference.h */,
-				469D98491826F950003B2021 /* PBXFileReference.m */,
+				469D98401826DC0A003B2021 /* PBXProjectDotPBXProj.h */,
+				469D98411826DC0A003B2021 /* PBXProjectDotPBXProj.m */,
+				465ABB8A18295CA0008C502B /* PBXObject.h */,
+				465ABB8B18295CA0008C502B /* PBXObject.m */,
+				465ABB8718295C5C008C502B /* PBXProject.h */,
+				465ABB8818295C5C008C502B /* PBXProject.m */,
+				465ABB8D18295DB7008C502B /* Objects */,
 				469D98421826DC0A003B2021 /* XcodeCompatibilityVersion.h */,
 				469D984B1826FA1F003B2021 /* PBXFileEncoding.h */,
 			);
@@ -317,10 +345,14 @@
 				469D98471826F701003B2021 /* PBXBuildFile.m in Sources */,
 				46368995182703B5003C154C /* PNProjectsChooserViewController.m in Sources */,
 				466D4270180CF17300562D07 /* PNMasterViewController.m in Sources */,
+				465ABB8918295C5C008C502B /* PBXProject.m in Sources */,
+				465ABBB11829AC45008C502B /* PBXReferenceProxy.m in Sources */,
 				466D4266180CF17300562D07 /* main.m in Sources */,
+				469A81C5182958F600FE268D /* PBXGroup.m in Sources */,
+				465ABB8C18295CA0008C502B /* PBXObject.m in Sources */,
 				469D984A1826F950003B2021 /* PBXFileReference.m in Sources */,
 				466D4273180CF17300562D07 /* PNDetailViewController.m in Sources */,
-				469D98431826DC0A003B2021 /* PBXProject.m in Sources */,
+				469D98431826DC0A003B2021 /* PBXProjectDotPBXProj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

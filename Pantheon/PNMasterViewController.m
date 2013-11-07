@@ -10,13 +10,13 @@
 
 #import "PNDetailViewController.h"
 
-#import "PBXProject.h"
+#import "PBXProjectDotPBXProj.h"
 
 #import "PNProjectsChooserViewController.h"
 
 @interface PNMasterViewController ()
 
-@property (nonatomic, strong) PBXProject *project;
+@property (nonatomic, strong) PBXProjectDotPBXProj *project;
 
 @end
 
@@ -140,7 +140,7 @@
         {
             /* Attempt to load the project. */
             NSError *error = nil;
-            PBXProject *project = [PBXProject projectFromXcodeProjectAtURL:url error:&error];
+            PBXProjectDotPBXProj *project = [PBXProjectDotPBXProj projectFromXcodeProjectAtURL:url error:&error];
             
             if (project) {
                 

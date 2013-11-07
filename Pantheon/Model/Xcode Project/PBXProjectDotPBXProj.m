@@ -19,11 +19,20 @@
     self = [super init];
     if (self) {
         _PBXBuildFiles = [[NSMutableArray alloc] init];
-        _PBXContainerItemProxies = [[NSMutableArray alloc] init];
-        _PBXFileReferences = [[NSMutableArray alloc] init];
         _PBXFrameworksBuildPhases = [[NSMutableArray alloc] init];
+        _PBXReferenceProxy = [[PBXReferenceProxy alloc] init];
+        _PBXFileReferences = [[NSMutableArray alloc] init];
         _PBXGroups = [[NSMutableArray alloc] init];
         _PBXNativeTargets = [[NSMutableArray alloc] init];
+        _PBXProject = [[PBXProject alloc] init];
+        _PBXResourcesBuildPhases = [[NSMutableArray alloc] init];
+        _PBXScriptBuildPhases = [[NSMutableArray alloc] init];
+        _PBXSourcesBuildPhases = [[NSMutableArray alloc] init];
+        _PBXTargetDependencies = [[NSMutableArray alloc] init];
+        _PBXVariantGroups = [[NSMutableArray alloc] init];
+        _XCBuildConfigurations = [[NSMutableArray alloc] init];
+        _PBXContainerItemProxies = [[NSMutableArray alloc] init];
+        _XCVersionGroup = [[NSDictionary alloc] init];
     }
     return self;
 }
@@ -82,8 +91,11 @@
                     /* Based on the kind of object, do the right thing with it. */
                     
                     /* If we find the PXBProject, we've got lots of work to do... */
-                    if ([object[@"isa"] isEqualToString:@"PBXGroup"]) {
-                            
+                    if ([object[@"isa"] isEqualToString:@"PBXProject"]) {
+                        [project setPBXProject:[[PBXProject alloc] initWithDictionary:object forUUID:key]];
+                        
+                        NSString *rootGroupKey = [[project PBXProject] mainGroup];
+                        NSDictionary *groupData = objectsInProject[rootGroupKey];
                     }
                 }
             }

@@ -32,4 +32,10 @@
  */
 @property (nonatomic, strong) NSString *path;
 
+/**
+ *  Intantiates a group with a dictionary and identifier.
+ */
+
+- (id)initWithIdentifier:(NSString *)identifier andDictionary:(NSDictionary *)dictionary;
+
 @end

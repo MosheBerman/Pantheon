@@ -10,10 +10,10 @@
 
 #import "PBXBuildFile.h"
 #import "PBXFileReference.h"
+#import "PBXProject.h"
+#import "PBXReferenceProxy.h"
 
-@class PBXReferenceProxy;
 @class PBXFrameworksBuildPhase;
-@class PBXProject_Obj;
 @class PBXResourcesBuildPhase;
 @class PBXSourcesBuildPhase;
 @class PBXTargetDependency;
@@ -46,7 +46,7 @@
 @property (nonatomic, strong) NSMutableArray *PBXFileReferences;
 @property (nonatomic, strong) NSMutableArray *PBXGroups;
 @property (nonatomic, strong) NSMutableArray *PBXNativeTargets;
-@property (nonatomic, strong) PBXProject_Obj *PBXProject;
+@property (nonatomic, strong) PBXProject *PBXProject;
 @property (nonatomic, strong) NSMutableArray *PBXResourcesBuildPhases;
 @property (nonatomic, strong) NSMutableArray *PBXScriptBuildPhases;
 @property (nonatomic, strong) NSMutableArray *PBXSourcesBuildPhases;
@@ -55,9 +55,6 @@
 @property (nonatomic, strong) NSMutableArray *XCBuildConfigurations;
 @property (nonatomic, strong) NSMutableArray *PBXContainerItemProxies;
 @property (nonatomic, strong) NSDictionary *XCVersionGroup;
-
-/* A display tree for efficiency. */
-@property (nonatomic, strong) id displayTree;
 
 /**
  *  Loads an Xcode project out from a given url.

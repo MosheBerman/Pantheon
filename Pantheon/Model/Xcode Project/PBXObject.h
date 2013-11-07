@@ -11,8 +11,8 @@
 @interface PBXObject : NSObject
 
 /**
- *  A 96 bit UUID that identifies the object.
+ *  A 24 character UUID that identifies the object.
  */
-@property (nonatomic, strong) NSUUID *reference;
+@property (nonatomic, strong) NSString *reference;
 
 @end
