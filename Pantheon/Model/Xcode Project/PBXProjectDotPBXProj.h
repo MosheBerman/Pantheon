@@ -68,4 +68,14 @@
 
 + (id)projectFromXcodeProjectAtURL:(NSURL *)url error:(NSError **)error;
 
+/**
+ *  Returns a complete relative path for a given file.
+ *
+ *  @param fileReference The file reference object that we want a path to.
+ *
+ *  @return A complete relative (or absolute) path to the fileReference.
+ *
+ */
+- (NSString *)resolvePathToFileReference:(PBXFileReference *)fileReference;
+
 @end
