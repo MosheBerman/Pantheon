@@ -10,6 +10,8 @@
 
 @interface PBXProjectDotPBXProj ()
 
+@property (nonatomic, strong) NSMutableDictionary *fileAndGroupRelationshipTable;
+
 @end
 
 @implementation PBXProjectDotPBXProj
@@ -33,6 +35,11 @@
         _XCBuildConfigurations = [[NSMutableArray alloc] init];
         _PBXContainerItemProxies = [[NSMutableArray alloc] init];
         _XCVersionGroup = [[NSDictionary alloc] init];
+        
+        /**
+         *  Keep a hash table for reverse file-group relationship lookups.
+         */
+        _fileAndGroupRelationshipTable = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -107,6 +114,13 @@
                     if ([object[@"isa"] isEqualToString:@"PBXGroup"]) {
                         PBXGroup *group = [[PBXGroup alloc] initWithIdentifier:key andDictionary:object];
                         [[project PBXGroups] addObject:group];
+                        
+                        /**
+                         *  Populate the reference table to help build paths out later.
+                         */
+                        for (NSString *child in group.children) {
+                            [project fileAndGroupRelationshipTable][child] = [group reference];
+                        }
                     }
                     
                     /**
@@ -117,8 +131,15 @@
                         PBXFileReference *file = [PBXFileReference fileReferenceWithIdentifier:key andDictionary:object];
                         [[project PBXFileReferences] addObject:file];
                     }
-                     
-                     
+                    
+                    /**
+                     *  TODO: Load other data here.
+                     *
+                     *  1. Ensure that a corresponding model class exists.
+                     *  2. Check the class type and instantate the correct object.
+                     *  3. Add to the correct collection.
+                     *  4. Profit.
+                     */
                 }
             }
         }
