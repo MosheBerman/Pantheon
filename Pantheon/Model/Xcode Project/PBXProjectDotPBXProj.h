@@ -10,6 +10,7 @@
 
 #import "PBXBuildFile.h"
 #import "PBXFileReference.h"
+#import "PBXGroup.h"
 #import "PBXProject.h"
 #import "PBXReferenceProxy.h"
 

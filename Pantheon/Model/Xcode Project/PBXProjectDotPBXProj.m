@@ -90,13 +90,35 @@
                 
                     /* Based on the kind of object, do the right thing with it. */
                     
-                    /* If we find the PXBProject, we've got lots of work to do... */
+                    /**
+                     *  If we find the PXBProject, save it.
+                     *  
+                     *  We're going to have to build the hierarchy later.
+                     *
+                     */
                     if ([object[@"isa"] isEqualToString:@"PBXProject"]) {
                         [project setPBXProject:[[PBXProject alloc] initWithDictionary:object forUUID:key]];
-                        
-                        NSString *rootGroupKey = [[project PBXProject] mainGroup];
-                        NSDictionary *groupData = objectsInProject[rootGroupKey];
                     }
+                    
+                    /**
+                     *  Add groups...
+                     */
+                    
+                    if ([object[@"isa"] isEqualToString:@"PBXGroup"]) {
+                        PBXGroup *group = [[PBXGroup alloc] initWithIdentifier:key andDictionary:object];
+                        [[project PBXGroups] addObject:group];
+                    }
+                    
+                    /**
+                     *  Add file references.
+                     */
+                    
+                    if ([object[@"isa"] isEqualToString:@"PBXFileReference"]) {
+                        PBXFileReference *file = [PBXFileReference fileReferenceWithIdentifier:key andDictionary:object];
+                        [[project PBXFileReferences] addObject:file];
+                    }
+                     
+                     
                 }
             }
         }
