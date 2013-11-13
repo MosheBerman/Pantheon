@@ -153,5 +153,54 @@
     return project;
 }
 
+/**
+ *  Returns a complete relative path for a given file.
+ *
+ *  @param fileReference The file reference object that we want a path to.
+ *
+ *  @return A complete relative (or absolute) path to the fileReference.
+ *
+ */
+- (NSString *)resolvePathToFileReference:(PBXFileReference *)fileReference
+{
+    
+    /* We're going to need a place to put the path. */
+    NSString *path = [fileReference path];
+    
+    /* The identifier of the file we're looking up. */
+    NSString *referenceIdentifier = [fileReference reference];
+    
+    /* The key we're using to look up the next level of hierarchy. */
+    NSString *lookupKey = referenceIdentifier;
+    
+    /* Walk the hierearchy, using the lookup table. */
+    while ([self fileAndGroupRelationshipTable][lookupKey]) {
+        
+        /* Look at the groups object for the referenced parent... */
+        PBXGroup *group = [self fileAndGroupRelationshipTable][lookupKey];
+        
+        /* If we've come up with a group... */
+        if (group) {
+            
+            /* Look for a group path... */
+            if ([group path]) {
+
+                /* If it exists, prepend the path component to the parent. */
+                path = [[group path] stringByAppendingPathComponent:path];
+                
+                /* Set the lookup key to the parent. */
+                lookupKey = [group reference];
+            }
+        }
+        
+        /* If there's no parent, we're done, nil out the lookupKey to break the loop. */
+        else {
+            lookupKey = nil;
+        }
+    }
+    
+    return path;
+}
+
 
 @end
