@@ -19,7 +19,8 @@
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _PBXBuildFiles = [[NSMutableArray alloc] init];
         _PBXFrameworksBuildPhases = [[NSMutableArray alloc] init];
         _PBXReferenceProxy = [[PBXReferenceProxy alloc] init];
@@ -179,18 +180,19 @@
         /* Look at the groups object for the referenced parent... */
         PBXGroup *group = [self fileAndGroupRelationshipTable][lookupKey];
         
-        /* If we've come up with a group... */
-        if (group) {
+        /* If we've come up with a group object... */
+        if ([group isKindOfClass:[PBXGroup class]]) {
             
-            /* Look for a group path... */
+            /* ...then look for a group path... */
             if ([group path]) {
 
                 /* If it exists, prepend the path component to the parent. */
                 path = [[group path] stringByAppendingPathComponent:path];
                 
-                /* Set the lookup key to the parent. */
-                lookupKey = [group reference];
             }
+            
+            /* Set the lookup key to the parent. */
+            lookupKey = [group reference];
         }
         
         /* If there's no parent, we're done, nil out the lookupKey to break the loop. */
