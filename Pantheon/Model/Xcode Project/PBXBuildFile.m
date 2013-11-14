@@ -16,7 +16,8 @@
     PBXBuildFile *buildFile = [[PBXBuildFile alloc] init];
     
     /* If creation succeeded, let's load up the properties from the dictionary.*/
-    if (buildFile) {
+    if (buildFile)
+    {
         [buildFile setReference:identifier]; //  The reference is passed in seperately.
         [buildFile setFileRef:dictionary[@"fileRef"]];  //  
         [buildFile setSettings:dictionary[@"settings"]];

@@ -14,8 +14,8 @@
 {
     self = [super init];
     if (self) {
-        [super setReference:identifier];    // The superclass holds the identifier.
-        _children =  dictionary[@"_children"];
+        [self setReference:identifier];    // The superclass holds the identifier.
+        _children =  dictionary[@"children"];
         _sourceTree = dictionary[@"sourceTree"];
         _name = dictionary[@"name"];
         _path = dictionary[@"path"];

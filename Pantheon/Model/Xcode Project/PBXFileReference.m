@@ -20,6 +20,8 @@
     
     if (fileReference) {
         
+        [fileReference setReference:string];    // The superclass holds the identifier.
+        
         [fileReference setFileEncoding:dictionary[@"fileEncoding"]];
         
         [fileReference setLastKnownFileType:dictionary[@"lastKnownFileType"]];
