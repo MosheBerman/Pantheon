@@ -189,7 +189,6 @@
         /* ... if we have one.. */
         if (group) {
             
-            
             /* ...then look for a group path... */
             if ([group path]) {
                 
