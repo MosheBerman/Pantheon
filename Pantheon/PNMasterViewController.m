@@ -127,6 +127,28 @@
      *  TODO: Load the file up - we need the Xcode project to be completely built for this to work, though.
      */
     
+    NSArray *files = [[self project] PBXFileReferences];
+    
+    if ([indexPath row] < [files count]) {
+        PBXFileReference *reference = [[self project] PBXFileReferences][[indexPath row]];
+        NSString *filePath = [[self project] resolvePathToFileReference:reference];
+    }
+    
+    /**
+     *  As I see it, there are several kinds of
+     *  actionable object categories:
+     *
+     *  1. NIB/Storyboard files - require visual rendering/editor. Can also be opened as XML source
+     *  2. Images, which are previewed in place.
+     *  3. Nonpreviewable Items, like frameworks and binaries. Preview the file type icon.
+     *  4. Groups - Expans/contract
+     *  5. Audio Files - Can be played.
+     *  6. Property Lists - Tree editor.
+     *  7. Source Code - Everything else, dited with a (syntax aware) text editor.
+     *
+     */
+    
+    
 }
 
 #pragma mark - Display Open Prompt
