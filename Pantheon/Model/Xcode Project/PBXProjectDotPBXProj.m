@@ -95,12 +95,12 @@
                     
                     /* Get the object itself. */
                     NSDictionary *object = objectsInProject[key];
-                
+                    
                     /* Based on the kind of object, do the right thing with it. */
                     
                     /**
                      *  If we find the PXBProject, save it.
-                     *  
+                     *
                      *  We're going to have to build the hierarchy later.
                      *
                      */
@@ -119,7 +119,8 @@
                         /**
                          *  Populate the reference table to help build paths out later.
                          */
-                        for (NSString *child in group.children) {
+                        for (NSString *child in group.children)
+                        {
                             [project fileAndGroupRelationshipTable][child] = [group reference];
                         }
                     }
@@ -175,33 +176,62 @@
     NSString *lookupKey = referenceIdentifier;
     
     /* Walk the hierearchy, using the lookup table. */
-    while ([self fileAndGroupRelationshipTable][lookupKey]) {
+    BOOL lookupExists = [[[self fileAndGroupRelationshipTable] allKeys] containsObject:lookupKey];
+    
+    while (lookupExists) {
+        
+        /* Convert the lookup key to the parent's key. */
+        NSString *groupKey = [self fileAndGroupRelationshipTable][lookupKey];
         
         /* Look at the groups object for the referenced parent... */
-        PBXGroup *group = [self fileAndGroupRelationshipTable][lookupKey];
+        PBXGroup *group = [self groupForReferenceIdentifier:groupKey];
         
-        /* If we've come up with a group object... */
-        if ([group isKindOfClass:[PBXGroup class]]) {
+        /* ... if we have one.. */
+        if (group) {
+            
             
             /* ...then look for a group path... */
             if ([group path]) {
-
+                
                 /* If it exists, prepend the path component to the parent. */
                 path = [[group path] stringByAppendingPathComponent:path];
                 
             }
             
-            /* Set the lookup key to the parent. */
-            lookupKey = [group reference];
+            /* Set the lookup to the group's id. */
+            lookupKey = groupKey;
+    
         }
         
         /* If there's no parent, we're done, nil out the lookupKey to break the loop. */
         else {
             lookupKey = nil;
         }
+        
+        /* */
+        lookupExists = [[[self fileAndGroupRelationshipTable] allKeys] containsObject:groupKey];
     }
     
     return path;
+}
+
+/**
+ *  Finds the group matching the key.
+ *
+ *  @param key The unique key of the group.
+ *  @return A group object, or nil if it's not found.
+ */
+
+- (PBXGroup *)groupForReferenceIdentifier:(NSString *)key
+{
+    PBXGroup *group = nil;
+    
+    for (PBXGroup *g in [self PBXGroups]) {
+        if ([[g reference] isEqualToString:key]) {
+            group = g;
+        }
+    }
+    return group;
 }
 
 
