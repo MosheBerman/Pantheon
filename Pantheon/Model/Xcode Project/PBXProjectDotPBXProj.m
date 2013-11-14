@@ -202,12 +202,7 @@
     
         }
         
-        /* If there's no parent, we're done, nil out the lookupKey to break the loop. */
-        else {
-            lookupKey = nil;
-        }
-        
-        /* */
+        /* Check for the next parent. */
         lookupExists = [[[self fileAndGroupRelationshipTable] allKeys] containsObject:groupKey];
     }
     
