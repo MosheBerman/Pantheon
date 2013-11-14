@@ -82,6 +82,7 @@
 		469D98481826F950003B2021 /* PBXFileReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXFileReference.h; sourceTree = "<group>"; };
 		469D98491826F950003B2021 /* PBXFileReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXFileReference.m; sourceTree = "<group>"; };
 		469D984B1826FA1F003B2021 /* PBXFileEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXFileEncoding.h; sourceTree = "<group>"; };
+		46F7EB181834BE5A00BE94DD /* FileTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,11 +220,20 @@
 				465ABB8718295C5C008C502B /* PBXProject.h */,
 				465ABB8818295C5C008C502B /* PBXProject.m */,
 				465ABB8D18295DB7008C502B /* Objects */,
-				469D98421826DC0A003B2021 /* XcodeCompatibilityVersion.h */,
-				469D984B1826FA1F003B2021 /* PBXFileEncoding.h */,
+				46F7EB171834BE3200BE94DD /* Headers */,
 			);
 			name = "Xcode Project";
 			path = "Model/Xcode Project";
+			sourceTree = "<group>";
+		};
+		46F7EB171834BE3200BE94DD /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				469D98421826DC0A003B2021 /* XcodeCompatibilityVersion.h */,
+				469D984B1826FA1F003B2021 /* PBXFileEncoding.h */,
+				46F7EB181834BE5A00BE94DD /* FileTypes.h */,
+			);
+			name = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
