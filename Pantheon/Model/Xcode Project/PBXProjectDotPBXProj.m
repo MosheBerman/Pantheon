@@ -210,6 +210,37 @@
 }
 
 /**
+ *  Resolves the file path and then prepends the documents folder path.
+ *
+ *  @param fileReference The PBXFileReference that we're querying.
+ *
+ *  @return A path pointing to the file that the object represents.
+ */
+
+- (NSString *)absolutePathToFileReference:(PBXFileReference *)fileReference
+{
+    
+    NSString *filePath = [self resolvePathToFileReference:fileReference];
+    NSString *documentsDirectory = [[[self projectURL] URLByDeletingLastPathComponent] path];
+    NSString *combinedPaths = [documentsDirectory stringByAppendingPathComponent:filePath];
+    
+    return combinedPaths;
+}
+
+/**
+ *  Returns the path to the app's documents directory.
+ *
+ *  @return A string representing the path to the app's document's directory.
+ */
+
+- (NSString *)documentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    return documentsPath;
+}
+
+/**
  *  Finds the group matching the key.
  *
  *  @param key The unique key of the group.

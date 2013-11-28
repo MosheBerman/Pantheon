@@ -8,9 +8,15 @@
 
 #import "PNDetailViewController.h"
 
+#import "PBXProjectDotPBXProj.h"
+
 @interface PNDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
+
+@property (nonatomic, strong) PBXFileReference *fileReference;
+@property (nonatomic, strong) PBXProjectDotPBXProj *project;
+
 @end
 
 @implementation PNDetailViewController
@@ -73,5 +79,34 @@
 {
     return YES;
 }
+
+#pragma mark - PNFileBrowserDelegateProtocol
+
+- (void)fileBrowserDidSelectFile:(PBXFileReference *)file inProject:(PBXProjectDotPBXProj *)project
+{
+    
+    [self setFileReference:file];
+    [self setProject:project];
+    
+    NSString *filePath = [[self project] absolutePathToFileReference:[self fileReference]];
+    
+    NSError *error = nil;
+    
+    NSData *data = [NSData dataWithContentsOfFile:filePath  options:0 error:&error];
+    
+    NSString *contents = nil;
+    
+    if (!error) {
+        contents = [NSString stringWithUTF8String:[data bytes]];
+    }
+    else
+    {
+        NSLog(@"Error: %@, %@, %@", [error localizedDescription], [[error userInfo] description], [[error userInfo][@"NSFilePath"] description]);
+    }
+    
+    [[self textView] setText:contents];
+}
+
+
 
 @end

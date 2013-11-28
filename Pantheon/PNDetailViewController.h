@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PNDetailViewController : UIViewController <UISplitViewControllerDelegate>
+#import "PNFileBrowserDelegateProtocol.h"
+
+@interface PNDetailViewController : UIViewController <UISplitViewControllerDelegate, PNFileBrowserDelegateProtocol>
 
 @property (strong, nonatomic) id detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
+
 @end

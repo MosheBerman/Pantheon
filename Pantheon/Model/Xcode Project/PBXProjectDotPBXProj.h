@@ -78,4 +78,14 @@
  */
 - (NSString *)resolvePathToFileReference:(PBXFileReference *)fileReference;
 
+/**
+ *  Resolves the file path and then prepends the documents folder path.
+ *
+ *  @param fileReference The PBXFileReference that we're querying.
+ *
+ *  @return A URL pointing to the file that the object represents.
+ */
+
+- (NSString *)absolutePathToFileReference:(PBXFileReference *)fileReference;
+
 @end
