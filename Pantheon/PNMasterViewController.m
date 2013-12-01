@@ -14,6 +14,8 @@
 
 #import "PNProjectsChooserViewController.h"
 
+#import "PNFileBrowserDelegateProtocol.h"
+
 @interface PNMasterViewController ()
 
 @property (nonatomic, strong) PBXProjectDotPBXProj *project;
@@ -37,6 +39,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(displayOpenPrompt:)];
     self.navigationItem.leftBarButtonItem = addButton;
     self.detailViewController = (PNDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.delegate = self.detailViewController;
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,7 +134,7 @@
     
     if ([indexPath row] < [files count]) {
         PBXFileReference *reference = [[self project] PBXFileReferences][[indexPath row]];
-        NSString *filePath = [[self project] resolvePathToFileReference:reference];
+        [[self delegate] fileBrowserDidSelectFile:reference inProject:[self project]];
     }
     
     /**
@@ -144,11 +147,8 @@
      *  4. Groups - Expans/contract
      *  5. Audio Files - Can be played.
      *  6. Property Lists - Tree editor.
-     *  7. Source Code - Everything else, dited with a (syntax aware) text editor.
-     *
+     *  7. Source Code - Everything else, edited with a (syntax aware) text editor.
      */
-    
-    
 }
 
 #pragma mark - Display Open Prompt

@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class PNDetailViewController;
+@protocol PNFileBrowserDelegateProtocol;
 
 @interface PNMasterViewController : UITableViewController
 
 @property (strong, nonatomic) PNDetailViewController *detailViewController;
+
+@property (nonatomic, strong) id<PNFileBrowserDelegateProtocol> delegate;
 
 @end
