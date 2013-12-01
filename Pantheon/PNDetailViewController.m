@@ -31,16 +31,16 @@
         // Update the view.
         [self configureView];
     }
-
+    
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
+    }
 }
 
 - (void)configureView
 {
     // Update the user interface for the detail item.
-
+    
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [self.detailItem description];
     }
@@ -90,21 +90,37 @@
     
     NSString *filePath = [[self project] absolutePathToFileReference:[self fileReference]];
     
-    NSError *error = nil;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
     
-    NSData *data = [NSData dataWithContentsOfFile:filePath  options:0 error:&error];
-    
-    NSString *contents = nil;
-    
-    if (!error) {
-        contents = [NSString stringWithUTF8String:[data bytes]];
+    if (!exists) {
+        NSLog(@"File does not exist...");
     }
     else
     {
-        NSLog(@"Error: %@, %@, %@", [error localizedDescription], [[error userInfo] description], [[error userInfo][@"NSFilePath"] description]);
+        NSError *error = nil;
+        
+        NSData *data = [NSData dataWithContentsOfFile:filePath  options:0 error:&error];
+        
+        NSString *contents = nil;
+        
+        if (error)
+        {
+            NSLog(@"Error: %@, %@, %@", [error localizedDescription], [[error userInfo] description], [[error userInfo][@"NSFilePath"] description]);
+            
+        }
+        else if (!data)
+        {
+            
+        }
+        else
+        {
+            self.title = file.name;
+            contents = [NSString stringWithUTF8String:[data bytes]];
+            NSLog(@"Contents: %@", contents);
+            
+            [[self textView] setText:contents];
+        }
     }
-    
-    [[self textView] setText:contents];
 }
 
 
