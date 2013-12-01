@@ -30,6 +30,7 @@
 		469D98431826DC0A003B2021 /* PBXProjectDotPBXProj.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98411826DC0A003B2021 /* PBXProjectDotPBXProj.m */; };
 		469D98471826F701003B2021 /* PBXBuildFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98461826F701003B2021 /* PBXBuildFile.m */; };
 		469D984A1826F950003B2021 /* PBXFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 469D98491826F950003B2021 /* PBXFileReference.m */; };
+		46ABD47718353C4E00CFC7EA /* PNAccordionStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABD47618353C4E00CFC7EA /* PNAccordionStateManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,9 @@
 		469D98481826F950003B2021 /* PBXFileReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXFileReference.h; sourceTree = "<group>"; };
 		469D98491826F950003B2021 /* PBXFileReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBXFileReference.m; sourceTree = "<group>"; };
 		469D984B1826FA1F003B2021 /* PBXFileEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBXFileEncoding.h; sourceTree = "<group>"; };
+		46ABD4731835396C00CFC7EA /* PNFileBrowserDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNFileBrowserDelegateProtocol.h; path = "File Browser/PNFileBrowserDelegateProtocol.h"; sourceTree = "<group>"; };
+		46ABD47518353C4E00CFC7EA /* PNAccordionStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNAccordionStateManager.h; path = "Accordion Tree Manager/PNAccordionStateManager.h"; sourceTree = "<group>"; };
+		46ABD47618353C4E00CFC7EA /* PNAccordionStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNAccordionStateManager.m; path = "Accordion Tree Manager/PNAccordionStateManager.m"; sourceTree = "<group>"; };
 		46F7EB181834BE5A00BE94DD /* FileTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 				466D4272180CF17300562D07 /* PNDetailViewController.m */,
 				46368993182703B5003C154C /* PNProjectsChooserViewController.h */,
 				46368994182703B5003C154C /* PNProjectsChooserViewController.m */,
+				46ABD4741835397100CFC7EA /* File Browser */,
 				466D4295180CF3CE00562D07 /* Model */,
 				466D4274180CF17300562D07 /* Images.xcassets */,
 				466D4260180CF17300562D07 /* Supporting Files */,
@@ -224,6 +229,16 @@
 			);
 			name = "Xcode Project";
 			path = "Model/Xcode Project";
+			sourceTree = "<group>";
+		};
+		46ABD4741835397100CFC7EA /* File Browser */ = {
+			isa = PBXGroup;
+			children = (
+				46ABD4731835396C00CFC7EA /* PNFileBrowserDelegateProtocol.h */,
+				46ABD47518353C4E00CFC7EA /* PNAccordionStateManager.h */,
+				46ABD47618353C4E00CFC7EA /* PNAccordionStateManager.m */,
+			);
+			name = "File Browser";
 			sourceTree = "<group>";
 		};
 		46F7EB171834BE3200BE94DD /* Headers */ = {
@@ -363,6 +378,7 @@
 				469D984A1826F950003B2021 /* PBXFileReference.m in Sources */,
 				466D4273180CF17300562D07 /* PNDetailViewController.m in Sources */,
 				469D98431826DC0A003B2021 /* PBXProjectDotPBXProj.m in Sources */,
+				46ABD47718353C4E00CFC7EA /* PNAccordionStateManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
